@@ -58,7 +58,7 @@ public class QuanLiPhongDAO {
 
             stmt.setString(1, tenPhong);
             stmt.setDouble(2, gia);
-            stmt.setString(3,loaiPhong);
+            stmt.setString(3, loaiPhong);
             stmt.setString(4, trangThai);
 
             int rowsInserted = stmt.executeUpdate();
@@ -74,4 +74,51 @@ public class QuanLiPhongDAO {
         }
     }
 
+    public void suaPhong(int id, String tenPhong, double gia, String loaiPhong, String trangThai) {
+        String sql = "UPDATE Phong SET TenPhong = ?, Gia = ?, Loai = ?, TrangThai = ? WHERE IDPhong = ?";
+
+        try (Connection conn = MyConnection.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, tenPhong);
+            stmt.setDouble(2, gia);
+            stmt.setString(3, loaiPhong);
+            stmt.setString(4, trangThai);
+            stmt.setInt(5, id);
+
+            int rowsAffected = stmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(null, "Cập nhật phòng thành công!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Không tìm thấy phòng để cập nhật!", "Lỗi",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Lỗi cập nhật phòng: " + e.getMessage(), "Lỗi",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void xoaPhong(int id) {
+        String sql = "DELETE FROM Phong WHERE IDPhong = ?";
+
+        try (Connection conn = MyConnection.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id);
+
+            int rowsAffected = stmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(null, "Xóa phòng thành công!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Không tìm thấy phòng để xóa!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Lỗi xóa phòng: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }

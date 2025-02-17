@@ -88,6 +88,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Component id="btnQuanLyHoaDon" alignment="1" max="32767" attributes="0"/>
+                  <Component id="btnQuanLiNoiThatPhong" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnQuanLiNoiThat" alignment="0" max="32767" attributes="0"/>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
@@ -115,8 +116,10 @@
                       <Component id="btnQuanLyHopDong" linkSize="1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnQuanLyHoaDon" linkSize="1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="btnQuanLiNoiThat" min="-2" pref="37" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Component id="btnQuanLiNoiThatPhong" min="-2" pref="37" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
@@ -202,6 +205,17 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnQuanLyHoaDon1ActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="btnQuanLiNoiThatPhong">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="QU&#x1ea2;N L&#xcd; N&#x1ed8;I TH&#x1ea4;T C&#x1ee6;A PH&#xd2;NG"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnQuanLiNoiThatPhongActionPerformed"/>
+              </Events>
+            </Component>
             <Component class="javax.swing.JButton" name="btnQuanLiNoiThat">
               <Properties>
                 <Property name="text" type="java.lang.String" value="QU&#x1ea2;N L&#xcd; N&#x1ed8;I TH&#x1ea4;T"/>
@@ -223,7 +237,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="96" max="32767" attributes="0"/>
+                      <EmptySpace pref="89" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
