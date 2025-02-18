@@ -20,6 +20,7 @@ public class QuanLiNoiThatPhong extends javax.swing.JFrame {
 
     public QuanLiNoiThatPhong() {
         initComponents();
+        setLocationRelativeTo(null);
         quanLiNoiThatPhong.loadPhongToComboBox(cbxPhong);
         quanLiNoiThatPhong.loadNoiThatToComboBox(cbxNoiThat);
         loadData();

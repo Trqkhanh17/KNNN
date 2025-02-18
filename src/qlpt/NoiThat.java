@@ -21,6 +21,7 @@ public class NoiThat extends javax.swing.JFrame {
      */
     public NoiThat() {
         initComponents();
+        setLocationRelativeTo(null);
         loadData();
     }
 

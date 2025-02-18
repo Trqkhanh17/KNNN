@@ -27,6 +27,7 @@ public class HoaDon extends javax.swing.JFrame {
 
     public HoaDon() {
         initComponents();
+        setLocationRelativeTo(null);
         quanLiHoaDon.loadPhongToComboBox(cbxPhong);
         loadData();
     }
