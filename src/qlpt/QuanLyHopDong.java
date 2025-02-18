@@ -4,6 +4,20 @@
  */
 package qlpt;
 
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author LENOVO
@@ -17,7 +31,15 @@ public class QuanLyHopDong extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
+    
+    HopDongDAO hopDongDAO = new HopDongDAO();
+    
+    private void loadData() {
+        hopDongDAO.loadHopDongData(tabHopDong);
+    }
 
+    public int id;
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,7 +54,6 @@ public class QuanLyHopDong extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -41,15 +62,14 @@ public class QuanLyHopDong extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        txtKhachHang = new javax.swing.JTextField();
-        txtIDPhong = new javax.swing.JTextField();
-        txtIDHopDong = new javax.swing.JTextField();
-        txtNgayLap = new javax.swing.JTextField();
-        txtTrangThai = new javax.swing.JTextField();
         txtTienCoc = new javax.swing.JTextField();
         txtThoiHan = new javax.swing.JTextField();
         txtSoNguoi = new javax.swing.JTextField();
         txtSoLuongXe = new javax.swing.JTextField();
+        cbxTenPhong = new javax.swing.JComboBox<>();
+        cbxTenKhachHang = new javax.swing.JComboBox<>();
+        cbxTrangThai = new javax.swing.JComboBox<>();
+        txtNgayLap = new javax.swing.JTextField();
         btnTao = new javax.swing.JButton();
         btnCapNhat = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
@@ -78,10 +98,10 @@ public class QuanLyHopDong extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(382, 382, 382)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(319, 319, 319))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,23 +113,49 @@ public class QuanLyHopDong extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel2.setText("ID Hợp Đồng: ");
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setText("Phòng: ");
 
-        jLabel3.setText("ID Phòng: ");
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setText("Khách Hàng: ");
 
-        jLabel4.setText("ID Khách Hàng: ");
-
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Ngày Lập: ");
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Trạng Thái: ");
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Tiền Cọc: ");
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Thời Hạn: ");
 
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setText("Số Người: ");
 
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("Số Lượng Xe: ");
+
+        txtTienCoc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        txtThoiHan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        txtSoNguoi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        txtSoLuongXe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        cbxTenPhong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cbxTenPhong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cbxTenKhachHang.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cbxTenKhachHang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cbxTrangThai.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cbxTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        txtNgayLap.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtNgayLap.setText("Ngày/Tháng/Năm");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -118,27 +164,17 @@ public class QuanLyHopDong extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtIDPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtNgayLap, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtIDHopDong, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cbxTenPhong, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbxTenKhachHang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbxTrangThai, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtNgayLap, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8)
@@ -156,14 +192,12 @@ public class QuanLyHopDong extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addGap(18, 18, 18)
                         .addComponent(txtTienCoc, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(76, 76, 76))
+                .addGap(10, 10, 10))
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel2, jLabel3, jLabel4, jLabel5, jLabel6});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel3, jLabel4, jLabel5, jLabel6});
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel10, jLabel7, jLabel8, jLabel9});
-
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtIDHopDong, txtIDPhong, txtKhachHang, txtNgayLap, txtTrangThai});
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtSoLuongXe, txtSoNguoi, txtThoiHan, txtTienCoc});
 
@@ -172,35 +206,32 @@ public class QuanLyHopDong extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
                     .addComponent(jLabel7)
-                    .addComponent(txtIDHopDong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTienCoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTienCoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
+                    .addComponent(cbxTenPhong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(txtIDPhong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtThoiHan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtThoiHan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
+                    .addComponent(cbxTenKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(txtKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSoNguoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel10)
-                    .addComponent(txtNgayLap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSoLuongXe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSoNguoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(txtTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(txtSoLuongXe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtNgayLap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnTao.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnTao.setText("Tạo");
         btnTao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,6 +239,7 @@ public class QuanLyHopDong extends javax.swing.JFrame {
             }
         });
 
+        btnCapNhat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnCapNhat.setText("Cập Nhật");
         btnCapNhat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,6 +247,7 @@ public class QuanLyHopDong extends javax.swing.JFrame {
             }
         });
 
+        btnXoa.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnXoa.setText("Xóa");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,6 +255,7 @@ public class QuanLyHopDong extends javax.swing.JFrame {
             }
         });
 
+        btnThoat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnThoat.setText("Thoát");
         btnThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,15 +263,13 @@ public class QuanLyHopDong extends javax.swing.JFrame {
             }
         });
 
+        tabHopDong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tabHopDong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "ID Hợp đồng", "ID Phòng", "ID Khách hàng", "Tiền cọc", "Thời hạn", "Số người", "Số lượng xe", "Ngày lập", "Trạng thái"
+                "ID Hợp Đồng", "Phòng", "Khách hàng", "Tiền cọc", "Thời hạn", "Số người", "Số lượng xe", "Ngày lập", "Trạng thái"
             }
         ));
         jScrollPane1.setViewportView(tabHopDong);
@@ -252,14 +284,15 @@ public class QuanLyHopDong extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnTao, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(btnTao, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnCapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 590, Short.MAX_VALUE))
+                        .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
         );
@@ -275,28 +308,121 @@ public class QuanLyHopDong extends javax.swing.JFrame {
                     .addComponent(btnCapNhat, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 8, Short.MAX_VALUE))
+                .addGap(0, 9, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tabHopDongMouseClicked(java.awt.event.MouseEvent evt) {                                         
+        int selectedRow = tabHopDong.getSelectedRow();
+        if (selectedRow == -1) {
+            return;
+        }
+
+        // Lấy dữ liệu từ bảng và đổ vào các ô nhập liệu
+        txtTienCoc.setText(tabHopDong.getValueAt(selectedRow, 3).toString());
+        txtThoiHan.setText(tabHopDong.getValueAt(selectedRow, 4).toString());
+        txtSoNguoi.setText(tabHopDong.getValueAt(selectedRow, 5).toString());
+        txtSoLuongXe.setText(tabHopDong.getValueAt(selectedRow, 6).toString());
+        txtNgayLap.setText(tabHopDong.getValueAt(selectedRow, 7).toString());
+
+        // Đổ dữ liệu vào combobox (phòng, khách hàng, trạng thái)
+        cbxTenPhong.setSelectedItem(tabHopDong.getValueAt(selectedRow, 1).toString());
+        cbxTenKhachHang.setSelectedItem(tabHopDong.getValueAt(selectedRow, 2).toString());
+        cbxTrangThai.setSelectedItem(tabHopDong.getValueAt(selectedRow, 8).toString());
+    }
+
+    
     private void btnTaoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnTaoActionPerformed
-        // TODO add your handling code here:
+        try {
+            // Lấy dữ liệu từ các ô nhập liệu
+//            String tenPhong = cbxTenPhong.getSelectedItem();
+//            String tenKhachHang = cbxTenKhachHang.getSelectedItem();
+//            String trangThai = cbxTrangThai.getSelectedItem();
+            String tienCoc = txtTienCoc.getText().trim();
+            String thoiHan = txtThoiHan.getText().trim();
+            String soNguoiO = txtSoNguoi.getText().trim();
+            String soLuongXe = txtSoLuongXe.getText().trim();
+            String ngayLap = txtNgayLap.getText().trim();
+
+            // Kiểm tra nếu có trường nào trống
+            if (cbxTenPhong.getSelectedItem() == null || cbxTenKhachHang.getSelectedItem() == null || cbxTrangThai.getSelectedItem() == null || tienCoc.isEmpty() || thoiHan.isEmpty() || soNguoiO.isEmpty()|| soNguoiO.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin!", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            // Lấy mô hình dữ liệu của bảng
+            DefaultTableModel model = (DefaultTableModel) tabHopDong.getModel();
+
+            // Thêm dòng mới vào bảng
+            model.addRow(new Object[]{ cbxTenPhong.getSelectedItem().toString(), cbxTenKhachHang.getSelectedItem().toString(), tienCoc, thoiHan, soNguoiO, soLuongXe, ngayLap, cbxTrangThai.getSelectedItem().toString()});
+
+            // Hiển thị thông báo thêm thành công
+            JOptionPane.showMessageDialog(this, "Thêm khách hàng thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+
+            // Xóa nội dung trong các ô nhập sau khi thêm
+//            txtIDKhachHang.setText("");
+//            txtHoTen.setText("");
+//            txtDiaChi.setText("");
+//            txtSDT.setText("");
+//            txtCCCD.setText("");
+//            txtHinhAnh.setText("");
+            //hopDongDAO.themHopDong(tenNoiThat, gia, ngayStr);
+            hopDongDAO.loadHopDongData(tabHopDong);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Lỗi không xác định: " + e.getMessage(), "Lỗi",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }// GEN-LAST:event_btnTaoActionPerformed
 
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnCapNhatActionPerformed
-        // TODO add your handling code here:
+        int selectedRow = tabHopDong.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn một hợp đồng để cập nhật!", "Thông báo", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        try {
+            // Lấy dữ liệu từ các ô nhập liệu
+            int idHopDong = Integer.parseInt(tabHopDong.getValueAt(selectedRow, 0).toString());
+            String tenPhong = cbxTenPhong.getSelectedItem().toString();
+            String tenKhachHang = cbxTenKhachHang.getSelectedItem().toString();
+            String trangThai = cbxTrangThai.getSelectedItem().toString();
+            String ngayLap = txtNgayLap.getText().trim();
+            String tienCoc = txtTienCoc.getText().trim();
+            String thoiHan = txtThoiHan.getText().trim();
+            String soNguoiO = txtSoNguoi.getText().trim();
+            String soLuongXe = txtSoLuongXe.getText().trim();
+
+            // Kiểm tra dữ liệu nhập
+            if (ngayLap.isEmpty() || tienCoc.isEmpty() || thoiHan.isEmpty() || soNguoiO.isEmpty() || soLuongXe.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin!", "Cảnh báo", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            // Cập nhật hợp đồng trong CSDL
+            HopDongDAO hopDongDAO = new HopDongDAO();
+            hopDongDAO.suaHopDong(idHopDong, tenPhong, tenKhachHang, ngayLap, tienCoc, thoiHan, soNguoiO, soLuongXe, trangThai);
+
+            // Tải lại dữ liệu bảng
+            HopDongDAO.loadHopDongData(tabHopDong);
+
+            JOptionPane.showMessageDialog(this, "Cập nhật hợp đồng thành công!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Lỗi khi cập nhật: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
     }// GEN-LAST:event_btnCapNhatActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnXoaActionPerformed
-        // TODO add your handling code here:
+        hopDongDAO.xoaHopDong(id);
+        hopDongDAO.loadHopDongData(tabHopDong);
     }// GEN-LAST:event_btnXoaActionPerformed
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnThoatActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }// GEN-LAST:event_btnThoatActionPerformed
 
     @Override
@@ -355,10 +481,12 @@ public class QuanLyHopDong extends javax.swing.JFrame {
     private javax.swing.JButton btnTao;
     private javax.swing.JButton btnThoat;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JComboBox<String> cbxTenKhachHang;
+    private javax.swing.JComboBox<String> cbxTenPhong;
+    private javax.swing.JComboBox<String> cbxTrangThai;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -370,14 +498,10 @@ public class QuanLyHopDong extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabHopDong;
-    private javax.swing.JTextField txtIDHopDong;
-    private javax.swing.JTextField txtIDPhong;
-    private javax.swing.JTextField txtKhachHang;
     private javax.swing.JTextField txtNgayLap;
     private javax.swing.JTextField txtSoLuongXe;
     private javax.swing.JTextField txtSoNguoi;
     private javax.swing.JTextField txtThoiHan;
     private javax.swing.JTextField txtTienCoc;
-    private javax.swing.JTextField txtTrangThai;
     // End of variables declaration//GEN-END:variables
 }
