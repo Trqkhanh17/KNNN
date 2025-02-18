@@ -37,7 +37,7 @@ public class TrangChu extends javax.swing.JFrame {
         btnQuanLyPhong = new javax.swing.JButton();
         btnQuanLyHopDong = new javax.swing.JButton();
         btnQuanLyHoaDon = new javax.swing.JButton();
-        btnQuanLyHoaDon1 = new javax.swing.JButton();
+        btnQuanLiNoiThatPhong = new javax.swing.JButton();
         btnQuanLiNoiThat = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
@@ -83,11 +83,11 @@ public class TrangChu extends javax.swing.JFrame {
             }
         });
 
-        btnQuanLyHoaDon1.setText("QUẢN LÝ HÓA ĐƠN");
-        btnQuanLyHoaDon1.setBorder(null);
-        btnQuanLyHoaDon1.addActionListener(new java.awt.event.ActionListener() {
+        btnQuanLiNoiThatPhong.setText("QUẢN LÍ NỘI THẤT CỦA PHÒNG");
+        btnQuanLiNoiThatPhong.setBorder(null);
+        btnQuanLiNoiThatPhong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnQuanLyHoaDon1ActionPerformed(evt);
+                btnQuanLiNoiThatPhongActionPerformed(evt);
             }
         });
 
@@ -104,30 +104,21 @@ public class TrangChu extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(btnQuanLiNoiThatPhong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnQuanLiNoiThat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnQuanLyKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnQuanLyPhong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnQuanLyHopDong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel2))))
-                    .addComponent(btnQuanLyKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnQuanLyPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnQuanLyHopDong, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(btnQuanLyHoaDon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnQuanLiNoiThat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(btnQuanLyHoaDon1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
-
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnQuanLyHopDong, btnQuanLyKhachHang, btnQuanLyPhong});
-
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -145,14 +136,11 @@ public class TrangChu extends javax.swing.JFrame {
                 .addComponent(btnQuanLyHopDong)
                 .addGap(18, 18, 18)
                 .addComponent(btnQuanLyHoaDon)
-                .addGap(18, 18, 18)
+                .addGap(28, 28, 28)
                 .addComponent(btnQuanLiNoiThat, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(btnQuanLiNoiThatPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(339, 339, 339)
-                    .addComponent(btnQuanLyHoaDon1)
-                    .addContainerGap(351, Short.MAX_VALUE)))
         );
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnQuanLyHoaDon, btnQuanLyHopDong, btnQuanLyKhachHang, btnQuanLyPhong});
@@ -170,7 +158,7 @@ public class TrangChu extends javax.swing.JFrame {
             .addGroup(jDesktopPane1Layout.createSequentialGroup()
                 .addGap(99, 99, 99)
                 .addComponent(jLabel1)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,9 +201,10 @@ public class TrangChu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnQuanLyHoaDon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuanLyHoaDon1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnQuanLyHoaDon1ActionPerformed
+    private void btnQuanLiNoiThatPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuanLiNoiThatPhongActionPerformed
+        new QuanLiNoiThatPhong().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnQuanLiNoiThatPhongActionPerformed
 
     private void btnQuanLiNoiThatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuanLiNoiThatActionPerformed
         new NoiThat().setVisible(true);
@@ -225,11 +214,11 @@ public class TrangChu extends javax.swing.JFrame {
     private void btnQuanLyPhongActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnQuanLyPhongActionPerformed
         this.dispose();
         new QuanLyPhong().setVisible(true); // TODO add your handling code here:
-        
+
     }// GEN-LAST:event_btnQuanLyPhongActionPerformed
 
     private void btnQuanLyKhachHangActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnQuanLyKhachHangActionPerformed
-         this.dispose();
+        this.dispose();
         new QuanLyKhachHang().setVisible(true); // TODO add your handling code here:
     }// GEN-LAST:event_btnQuanLyKhachHangActionPerformed
 
@@ -239,7 +228,7 @@ public class TrangChu extends javax.swing.JFrame {
     }// GEN-LAST:event_btnQuanLyHopDongActionPerformed
 
     private void btnQuanLyHoaDonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnQuanLyHoaDonActionPerformed
-        new QuanLyHoaDon().setVisible(true);
+        new HoaDon().setVisible(true);
         this.dispose();// TODO add your handling code here:
     }// GEN-LAST:event_btnQuanLyHoaDonActionPerformed
 
@@ -284,8 +273,8 @@ public class TrangChu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnQuanLiNoiThat;
+    private javax.swing.JButton btnQuanLiNoiThatPhong;
     private javax.swing.JButton btnQuanLyHoaDon;
-    private javax.swing.JButton btnQuanLyHoaDon1;
     private javax.swing.JButton btnQuanLyHopDong;
     private javax.swing.JButton btnQuanLyKhachHang;
     private javax.swing.JButton btnQuanLyPhong;

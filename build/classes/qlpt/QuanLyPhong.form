@@ -197,8 +197,8 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="5" rowCount="4">
-                <Column editable="true" title="ID Ph&#xf2;ng" type="java.lang.Integer"/>
-                <Column editable="true" title="T&#xea;n Ph&#xf2;ng" type="java.lang.String"/>
+                <Column editable="true" title="ID Ph&#xf2;ng" type="java.lang.Object"/>
+                <Column editable="true" title="T&#xea;n Ph&#xf2;ng" type="java.lang.Object"/>
                 <Column editable="true" title="Lo&#x1ea1;i Ph&#xf2;ng" type="java.lang.String"/>
                 <Column editable="true" title="Gi&#xe1; Ph&#xf2;ng" type="java.lang.Float"/>
                 <Column editable="true" title="Tr&#x1ea1;ng Th&#xe1;i" type="java.lang.String"/>
@@ -237,6 +237,9 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabPhongMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
