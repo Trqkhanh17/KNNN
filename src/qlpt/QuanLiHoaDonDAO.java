@@ -48,6 +48,31 @@ public class QuanLiHoaDonDAO {
         }
     }
 
+    private HashMap<String, Integer> khachHangMap = new HashMap<>();
+
+    public void loadKhachHangToComboBox(JComboBox<String> cbxKhachHang) {
+        String sql = "SELECT IDKhachHang, CCCD FROM KhachHang";
+        khachHangMap.clear(); // Xóa dữ liệu cũ trong HashMap
+
+        try (Connection conn = MyConnection.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                ResultSet rs = pstmt.executeQuery()) {
+
+            cbxKhachHang.removeAllItems(); // Xóa dữ liệu cũ trong ComboBox
+            while (rs.next()) {
+                int idKhachHang = rs.getInt("IDKhachHang");
+                String cccd = rs.getString("CCCD");
+
+                cbxKhachHang.addItem(cccd);
+                khachHangMap.put(cccd, idKhachHang); // Lưu ID vào HashMap
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            MyConnection.closeConnection();
+        }
+    }
+
     // Lấy ID của phòng khi chọn từ ComboBox
     public int getSelectedPhongID(JComboBox<String> cbxPhong) {
         String selectedPhong = (String) cbxPhong.getSelectedItem();
@@ -189,8 +214,7 @@ public class QuanLiHoaDonDAO {
         if (confirm == JOptionPane.YES_OPTION) {
             String sql = "DELETE FROM HoaDon WHERE IDHoaDon = ?";
 
-            try (Connection conn = MyConnection.getConnection();
-                    PreparedStatement stmt = conn.prepareStatement(sql)) {
+            try (Connection conn = MyConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
 
                 stmt.setInt(1, idHoaDon);
                 int affectedRows = stmt.executeUpdate(); // Thực hiện lệnh xóa

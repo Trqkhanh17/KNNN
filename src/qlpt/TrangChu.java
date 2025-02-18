@@ -223,7 +223,7 @@ public class TrangChu extends javax.swing.JFrame {
     }// GEN-LAST:event_btnQuanLyKhachHangActionPerformed
 
     private void btnQuanLyHopDongActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnQuanLyHopDongActionPerformed
-        new QuanLyHopDong().setVisible(true);
+        new HopDong().setVisible(true);
         this.dispose();// TODO add your handling code here:
     }// GEN-LAST:event_btnQuanLyHopDongActionPerformed
 
