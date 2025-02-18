@@ -6,17 +6,15 @@
             <file>file:/D:/KNNN/QLPT/src/qlpt/NoiThatDAO.java</file>
             <file>file:/D:/KNNN/QLPT/src/qlpt/TrangChu.java</file>
             <file>file:/D:/KNNN/QLPT/src/qlpt/QuanLyKhachHang.java</file>
-            <file>file:/D:/KNNN/QLPT/src/qlpt/QuanLiNoiThatPhong.java</file>
+            <file>file:/D:/KNNN/QLPT/src/qlpt/QuanLiHoaDonDAO.java</file>
+            <file>file:/D:/KNNN/QLPT/src/qlpt/QuanLiNoiThatPhongDAO.java</file>
+            <file>file:/D:/KNNN/QLPT/src/qlpt/QuanLyPhong.java</file>
             <file>file:/D:/KNNN/QLPT/src/qlpt/HoaDon.java</file>
             <file>file:/D:/KNNN/QLPT/src/qlpt/MyConnection.java</file>
             <file>file:/D:/KNNN/QLPT/src/qlpt/NoiThat.java</file>
             <file>file:/D:/KNNN/QLPT/src/qlpt/QuanLyHopDong.java</file>
-            <file>file:/D:/KNNN/QLPT/src/qlpt/HopDong.java</file>
             <file>file:/D:/KNNN/QLPT/src/qlpt/QuanLiPhongDAO.java</file>
-            <file>file:/D:/KNNN/QLPT/src/qlpt/QuanLyHoaDon.java</file>
-            <file>file:/D:/KNNN/QLPT/src/qlpt/QuanLiNoiThatPhongDAO.java</file>
-            <file>file:/D:/KNNN/QLPT/src/qlpt/QuanLyPhong.java</file>
-            <file>file:/D:/KNNN/QLPT/src/qlpt/DatPhongTro.java</file>
+            <file>file:/D:/KNNN/QLPT/src/qlpt/HopDong.java</file>
         </group>
     </open-files>
 </project-private>

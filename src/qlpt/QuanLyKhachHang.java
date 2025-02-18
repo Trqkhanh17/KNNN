@@ -287,7 +287,7 @@ public class QuanLyKhachHang extends javax.swing.JFrame {
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnThoatActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new QuanLyHoaDon().setVisible(true);
+        new TrangChu().setVisible(true);
     }// GEN-LAST:event_btnThoatActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTextField3ActionPerformed
